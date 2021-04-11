@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
 from clicking_functions import click_txt_button, fill_in_report_page
-from fill_out_login_page import fill_out_form
+import login_page_functions as login_page
 
 login = input("Login: ")
 password = input("Password: ")
@@ -12,7 +12,7 @@ report_generating_page_url = ""
 driver = webdriver.Chrome()
 
 # fill out login page
-fill_out_form(driver, login_page_url, login, password)
+login_page.fill_out_form(driver, login_page_url, login, password)
 
 time.sleep(1)
 
