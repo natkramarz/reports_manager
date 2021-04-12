@@ -17,7 +17,7 @@ report_generating_page_url = ""
 driver = webdriver.Chrome()
 
 # fill out login page
-login_page.fill_out_form(driver, login_page_url, login, password)
+login_page.fill_out(driver, login_page_url, login, password)
 
 time.sleep(1)
 
