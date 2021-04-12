@@ -5,7 +5,7 @@ class ReportPage:
 
     def __init__(self, driver, start_day, start_month, end_day, end_month):
         self.driver = driver
-        self.days = (start_day, start_month)
+        self.days = (start_day, end_month)
         self.months = (start_month, end_month)
 
     def set_date_calendar(self, calendars):

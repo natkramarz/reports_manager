@@ -6,10 +6,10 @@ from report_page import ReportPage
 
 login = input("Login: ")
 password = input("Password: ")
-start_month = input(int("Start month: "))
-start_day = input(int("Start day: "))
-end_month = input(int("End month:"))
-end_day = input(int("End day: "))
+start_month = int(input("Start month: "))
+start_day = int(input("Start day: "))
+end_month = int(input("End month: "))
+end_day = int(input("End day: "))
 login_page_url = ""
 report_generating_page_url = ""
 
