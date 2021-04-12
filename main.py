@@ -1,10 +1,15 @@
 from selenium import webdriver
 import time
-from clicking_functions import click_txt_button, fill_in_report_page
-import login_page_functions as login_page
+
+import login_page
+from report_page import ReportPage
 
 login = input("Login: ")
 password = input("Password: ")
+start_month = input(int("Start month: "))
+start_day = input(int("Start day: "))
+end_month = input(int("End month:"))
+end_day = input(int("End day: "))
 login_page_url = ""
 report_generating_page_url = ""
 
@@ -27,9 +32,10 @@ table_len = len(driver.find_elements_by_xpath('//table[@class="content"]/tbody/t
 driver.find_element_by_xpath('/html/body/div/div[2]/div[1]/form/table/tbody/tr[2]/td[1]/a').click()
 time.sleep(1)
 
-# filling needed information
-fill_in_report_page(driver)
-click_txt_button(driver)
+# filling in needed information
+report_page = ReportPage(driver, start_day, start_month, end_day, end_month)
+report_page.fill_in_report_page()
+report_page.click_txt_button()
 
 # generating the rest of reports
 for row in range(3, table_len + 1):
@@ -39,5 +45,5 @@ for row in range(3, table_len + 1):
     # choosing the object for which the report is to be generated
     driver.find_element_by_xpath(f"/html/body/div/div[2]/div[1]/form/table/tbody/tr[{row}]/td[1]/a").click()
     time.sleep(0.3)
-    click_txt_button(driver)
+    report_page.click_txt_button()
     time.sleep(0.3)
