@@ -12,7 +12,6 @@ class ReportPage:
         today = datetime.today()
         for i in range(len(calendars)):
             calendars[i].click()
-            # to-do: set up month picker
             click_cnt = today.month - self.months[i]
             for _ in range(click_cnt):
                 self.driver.find_element_by_class_name('ui-datepicker-prev').click()
