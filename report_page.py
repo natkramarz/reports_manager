@@ -20,7 +20,7 @@ class ReportPage:
             table_len = len(self.driver.find_elements_by_xpath('//table[@class="ui-datepicker-calendar"]/tbody/tr'))
             self.driver.find_element_by_xpath(f"//a[text()={self.start_day[i]}]").click()
 
-    def fill_in_report_page(self):
+    def fill_in(self):
         # finding calendars
         calendars = self.driver.find_elements_by_class_name('ui-datepicker-trigger')
         self.set_date_calendar(calendars)

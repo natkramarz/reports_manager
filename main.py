@@ -34,7 +34,7 @@ time.sleep(1)
 
 # filling in needed information
 report_page = ReportPage(driver, start_day, start_month, end_day, end_month)
-report_page.fill_in_report_page()
+report_page.fill_in()
 report_page.click_txt_button()
 
 # generating the rest of reports
