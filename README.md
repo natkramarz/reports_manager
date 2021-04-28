@@ -1,3 +1,4 @@
 # Automatic report generation
 
-The program fills out and submits login data provided by user, fills out needed information on the website to generate reports and repeats the proccess for the whole list of objects included on the seperate subpage.     
+The program fills out a login page with data provided by a user. 
+It retrieves needed data to generate reports from a subpage and then fills out the generating reports subpage.     
