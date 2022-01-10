@@ -3,32 +3,31 @@ from datetime import datetime
 
 class ReportPage:
 
-    def __init__(self, driver, start_day, start_month, end_day, end_month):
+    def __init__(self, driver, start_date, end_date):
         self.driver = driver
-        self.days = (start_day, end_month)
-        self.months = (start_month, end_month)
+        self.dates = (start_date, end_date)
 
     def set_date_calendar(self, calendars):
         today = datetime.today()
         for i in range(len(calendars)):
             calendars[i].click()
-            click_cnt = today.month - self.months[i]
+            click_cnt = (today.year - self.dates[i].year) * 12 + (today.month - self.dates[i].month)
             for _ in range(click_cnt):
                 self.driver.find_element_by_class_name('ui-datepicker-prev').click()
             time.sleep(0.3)
-            table_len = len(self.driver.find_elements_by_xpath('//table[@class="ui-datepicker-calendar"]/tbody/tr'))
-            self.driver.find_element_by_xpath(f"//a[text()={self.start_day[i]}]").click()
+            self.driver.find_element_by_xpath(f"//a[text()={self.dates[i].day}]").click()
+            time.sleep(0.3)
 
-    def fill_in(self):
+    def fill_in_report_page(self):
         # finding calendars
         calendars = self.driver.find_elements_by_class_name('ui-datepicker-trigger')
         self.set_date_calendar(calendars)
 
         # setting up start and end time
-        start_time = self.driver.find_element_by_name("startTime")
+        start_time = self.driver.find_element_by_name("fromTime")
         start_time.clear()
         start_time.send_keys("8:00")
-        end_time = self.driver.find_element_by_name("endTime")
+        end_time = self.driver.find_element_by_name("toTime")
         end_time.clear()
         end_time.send_keys("18:00")
 
